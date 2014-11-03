@@ -74,8 +74,8 @@ func main() {
 			fmt.Printf("Passed %s with %d\n", t.name, t.ret)
 		default:
 			failedColours()
-			fmt.Printf("%s → %s, but expected %d\n", t.name, out, t.ret)
+			fmt.Printf("%s → %d, but expected %d\n", t.name, out, t.ret)
 		}
+        resetColours()
 	}
-	resetColours()
 }

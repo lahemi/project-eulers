@@ -28,9 +28,13 @@ func problem18() int {
 		}
 		return x
 	}
-	type Data []int
-	var data = []Data{}
+
+	var data = [][]int{}
+
+	// input18 can be found in inputdata.go, for convenience.
 	snl := strings.Split(input18, "\n")
+
+	// Convert the data and fill the [][]int
 	for i := 1; i < len(snl)-1; i++ {
 		sints := strings.Split(snl[i], " ")
 		var nums []int
@@ -40,10 +44,16 @@ func problem18() int {
 		}
 		data = append(data, nums)
 	}
+
+	// The actual logic and its implementation are pretty simple.
+	// We "cheat" a little by not running down to the second last
+	// line first, instead starting from there straight away.
+	// Effectively the same.
 	for line := len(data) - 2; line >= 0; line-- {
 		for pos := 0; pos < len(data[line]); pos++ {
 			e1, e2 := data[line+1][pos], data[line+1][pos+1]
 			cur := data[line][pos]
+			// I think the compiler actually inlines max to avoid the func call overhead.
 			cur += max(e1, e2)
 			data[line][pos] = cur
 		}
