@@ -53,8 +53,7 @@ func problem9() int {
 	// Because Dickson's method!
 	dickson := func(r int) int { return (r * r) / 2 }
 
-	// Arbitrary, but sufficient, limit. r must always be even.
-	for r := 2; r < 200; r += 2 {
+	for r := 2; ; r += 2 {
 		fl := factor(dickson(r))
 		// Grouping the smallest and largest values to be used together.
 		ss, ts := fl[:len(fl)/2], fl[len(fl)/2:]
